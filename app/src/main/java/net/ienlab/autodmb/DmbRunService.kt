@@ -64,7 +64,7 @@ class DmbRunService : Service() {
                 when (action) {
                     Intent.ACTION_POWER_CONNECTED -> {
 
-                        Toast.makeText(applicationContext, "Power Connected", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext, "전원 연결됨. 앱 실행 및 미디어 볼륨 최대", Toast.LENGTH_SHORT).show()
                         var launchIntent = packageManager.getLaunchIntentForPackage(sharedPreference.getString("runPackageName", "com.android.vending")!!)
                         launchIntent!!.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         if (launchIntent != null) {
@@ -74,7 +74,7 @@ class DmbRunService : Service() {
                         am.setStreamVolume(AudioManager.STREAM_MUSIC, am.getStreamMaxVolume(AudioManager.STREAM_MUSIC), AudioManager.FLAG_SHOW_UI)
                     }
                     Intent.ACTION_POWER_DISCONNECTED -> {
-                        Toast.makeText(applicationContext, "Power Disconnected", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext, "런처로 돌아갑니다.", Toast.LENGTH_SHORT).show()
 //                        Thread(Runnable {
 //                            Instrumentation().sendKeyDownUpSync(KeyEvent.KEYCODE_HOME)
 //                        }).start()
