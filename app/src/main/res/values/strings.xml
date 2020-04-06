@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">AutoDmb</string>
-    <string name="sample_device_admin">SAMPLE DEVICE ADMIN</string>
-    <string name="sample_device_admin_description">DESCRIPTION</string>
+    <string name="app_name">차량용 자동 DMB 런처</string>
+    <string name="sample_device_admin">차량용 자동 DMB 런처</string>
+    <string name="sample_device_admin_description">전원 연결 시 앱을 실행하고 종료하는 데 사용됩니다.</string>
 
 
 </resources>
