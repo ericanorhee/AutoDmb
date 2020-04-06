@@ -59,11 +59,9 @@ class DmbRunService : Service() {
         var batteryReceiver = object: BroadcastReceiver() {
             @SuppressLint("InvalidWakeLockTag")
             override fun onReceive(context: Context, intent: Intent) {
-                var cnt = 0
                 var action = intent.action
                 when (action) {
                     Intent.ACTION_POWER_CONNECTED -> {
-
                         Toast.makeText(applicationContext, "전원 연결됨. 앱 실행 및 미디어 볼륨 최대", Toast.LENGTH_SHORT).show()
                         var launchIntent = packageManager.getLaunchIntentForPackage(sharedPreference.getString("runPackageName", "com.android.vending")!!)
                         launchIntent!!.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -75,9 +73,6 @@ class DmbRunService : Service() {
                     }
                     Intent.ACTION_POWER_DISCONNECTED -> {
                         Toast.makeText(applicationContext, "런처로 돌아갑니다.", Toast.LENGTH_SHORT).show()
-//                        Thread(Runnable {
-//                            Instrumentation().sendKeyDownUpSync(KeyEvent.KEYCODE_HOME)
-//                        }).start()
 
                         val intent = Intent()
                         intent.action = "android.intent.action.MAIN"
@@ -89,8 +84,7 @@ class DmbRunService : Service() {
                                     or Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED
                         )
                         startActivity(intent)
-
-//                        devicePolicyManager.lockNow()
+                        devicePolicyManager.lockNow()
                     }
                 }
             }
