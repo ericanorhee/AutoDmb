@@ -34,7 +34,7 @@ class DmbRunService : Service() {
         val sharedPreference = getSharedPreferences("${packageName}_pref", Context.MODE_PRIVATE)
         val nm = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(ChannelId.ALWAYS_ID, "얼웨이즈", NotificationManager.IMPORTANCE_MIN)
+            val channel = NotificationChannel(ChannelId.ALWAYS_ID, "상시 알림", NotificationManager.IMPORTANCE_MIN)
             nm.createNotificationChannel(channel)
         }
 
@@ -42,15 +42,15 @@ class DmbRunService : Service() {
 //        val notiIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0)
 
         val always = NotificationCompat.Builder(this, ChannelId.ALWAYS_ID)
-        always.setContentTitle("타이틀")
-            .setContentText("컨텐트")
+        always.setContentTitle(getString(R.string.app_name))
+            .setContentText("DMB 실행 대기 중")
 //            .setContentIntent(notiIntent)
-            .setSmallIcon(R.drawable.logo_img)
+            .setSmallIcon(R.drawable.ic_alert)
             .setAutoCancel(true)
             .setColor(ContextCompat.getColor(applicationContext, R.color.colorAccent))
             .setShowWhen(false)
             .setDefaults(NotificationCompat.DEFAULT_ALL)
-        startForeground(38038, always.build())
+        startForeground(3804238, always.build())
 
         val devicePolicyManager = applicationContext.getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
 
